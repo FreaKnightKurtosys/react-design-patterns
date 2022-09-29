@@ -7,6 +7,10 @@ const Container = styled.div`
 
 const Pane = styled.div<{ weight: number }>`
 	flex: ${props => props.weight};
+	border: 1px solid #999;
+	margin: 0 10px;
+	padding: 0 10px;
+	border-radius: 3px;
 `;
 
 export interface SplitScreenProps {

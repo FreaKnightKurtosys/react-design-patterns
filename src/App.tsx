@@ -13,24 +13,28 @@ interface ITextProps {
 }
 
 const HeadingComponent: React.FC<ITextProps> = (props) => {
-	return <h1 style={{ backgroundColor: 'green' }}>{props.text}</h1>;
+	return <h1 style={{ borderBottom: '1px solid #999' }}>{props.text}</h1>;
 }
 
 const ParagraphComponent: React.FC<ITextProps> = (props) => {
-	return <p style={{ backgroundColor: 'red' }}>{props.text}</p>;
+	return <p>{props.text}</p>;
 }
 
 function App() {
 	return (
 		<>
-			<SplitScreen leftWeight={1} rightWeight={3}>
-				<HeadingComponent text={'Left!'} />
-				<ParagraphComponent text={'Right!'} />
+			<HeadingComponent text={'People'} />
+			<ParagraphComponent text={'Listing out the people data with the small list on the left and large list on the right'} />
+			<SplitScreen leftWeight={1} rightWeight={2}>
+				<RegularList items={people} resourceName="person" itemComponent={SmallPersonListItem} />
+				<RegularList items={people} resourceName="person" itemComponent={LargePersonListItem} />
 			</SplitScreen>
-			<RegularList items={people} resourceName="person" itemComponent={SmallPersonListItem} />
-			<RegularList items={people} resourceName="person" itemComponent={LargePersonListItem} />
-			<RegularList items={products} resourceName="product" itemComponent={SmallProductListItem} />
-			<RegularList items={products} resourceName="product" itemComponent={LargeProductListItem} />
+			<HeadingComponent text={'Products'} />
+			<ParagraphComponent text={'Listing out the product data with the small list on the left and large list on the right'} />
+			<SplitScreen leftWeight={1} rightWeight={2}>
+				<RegularList items={products} resourceName="product" itemComponent={SmallProductListItem} />
+				<RegularList items={products} resourceName="product" itemComponent={LargeProductListItem} />
+			</SplitScreen>
 		</>
 	);
 }
